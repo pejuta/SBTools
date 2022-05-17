@@ -3,7 +3,7 @@
 // @namespace   https://twitter.com/11powder
 // @description Stella Boardの各種行動画面のキャラ選択を便利にする
 // @include     /^http:\/\/stella2\.428\.st\/?(?:\?mode=action)?$/
-// @version     1.0.12.2
+// @version     1.0.12.3
 // @updateURL   https://pejuta.github.io/SBTools/UserScripts/SBActionCharaSelector.user.js
 // @downloadURL https://pejuta.github.io/SBTools/UserScripts/SBActionCharaSelector.user.js
 // @grant       none
@@ -174,6 +174,10 @@ await (async () => {
         });
     }
 
+    function appendNotice() {
+        $("<div><small>現在のところ、所持スキルの表示には<a href='?mode=chara' target='_blank' style='color:white;'>キャラ設定ページで【□他者プロフィール時、詳細表示をデフォルトにする】のチェックを外す</a>必要があります。</small></div>").appendTo($(".charaframe2.charaframeself").prev("p"));
+    }
+
     let processingEvent = false;
     $("head").append(`
 <style type="text/css">
@@ -231,4 +235,5 @@ await (async () => {
         hideAllInsertedData();
     });
     enableToggleOfSkillEffects();
+    appendNotice();
 })();
