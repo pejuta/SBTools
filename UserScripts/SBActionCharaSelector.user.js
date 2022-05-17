@@ -3,7 +3,7 @@
 // @namespace   https://twitter.com/11powder
 // @description Stella Boardの各種行動画面のキャラ選択を便利にする
 // @include     /^http:\/\/stella2\.428\.st\/?(?:\?mode=action)?$/
-// @version     1.0.12.3
+// @version     1.0.13
 // @updateURL   https://pejuta.github.io/SBTools/UserScripts/SBActionCharaSelector.user.js
 // @downloadURL https://pejuta.github.io/SBTools/UserScripts/SBActionCharaSelector.user.js
 // @grant       none
@@ -209,7 +209,8 @@ await (async () => {
         background-color: #e0dd90;
     }
 </style>`);
-    $(".charaframe").off("click").on("click", async function() {
+    $(".charaframe").each((i, e) => e.outerHTML = e.outerHTML /* erasing events */);
+    $(".charaframe").on("click", async function() {
         if (processingEvent) return;
         processingEvent = true;
         try {
