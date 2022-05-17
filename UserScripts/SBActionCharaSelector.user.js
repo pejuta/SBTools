@@ -3,7 +3,7 @@
 // @namespace   https://twitter.com/11powder
 // @description Stella Boardの各種行動画面のキャラ選択を便利にする
 // @include     /^http:\/\/stella2\.428\.st\/?(?:\?mode=action)?$/
-// @version     1.0.12.1
+// @version     1.0.12.2
 // @updateURL   https://pejuta.github.io/SBTools/UserScripts/SBActionCharaSelector.user.js
 // @downloadURL https://pejuta.github.io/SBTools/UserScripts/SBActionCharaSelector.user.js
 // @grant       none
@@ -107,6 +107,13 @@ await (async () => {
         processCharaSkillsAfterInsertion($skills);
 
         return null;
+    }
+
+    function hideAllInsertedData() {
+        $("." + dataClassname).hide()
+                              .closest(".charaframe")
+                              .find(".tubuyaki").toggleClass("inline").end()
+                              .find(".pin").toggleClass("block");
     }
 
     function processCharaSkillsAfterInsertion($skills) {
@@ -219,6 +226,9 @@ await (async () => {
         finally {
             processingEvent = false;
         }
+    });
+    $("#memberreset").on("click", function() {
+        hideAllInsertedData();
     });
     enableToggleOfSkillEffects();
 })();
