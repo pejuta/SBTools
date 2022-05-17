@@ -12,5 +12,8 @@
 > 連れ出す人の枠を再クリックすることで、その人を選択から外せるようにする。
 
 ### チャット関連
+- [SBAddUserTimelines](https://pejuta.github.io/SBTools/UserScripts/SBAddUserTimelines.user.js)
+> ［＋TL］ボタンをクリックし、ENo.を入力することでユーザーの発言タイムラインを追加できる。
+> ［＋SEARCH］ボタンをクリックすると、現在表示しているページおよび検索語句に応じたタイムラインを追加できる。
 
 ### 各種設定
