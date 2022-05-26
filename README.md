@@ -13,7 +13,7 @@
 
 - [SBMapItemInfo.user.js](https://pejuta.github.io/SBTools/UserScripts/SBMapItemInfo.user.js)
 > まだ取得していない固定ドロップのある星をマークで確認できるようにする。  
-> 取得済みも含めたすべての固定ドロップを確認できる。
+> 取得済みも含めたすべての固定ドロップを確認できる。  
 > 協力: [@nanashino_f](https://twitter.com/nanashino_f) - [Libra Report](http://gameprn.web.fc2.com/SB2/index.html)  
 
 ### チャット関連
