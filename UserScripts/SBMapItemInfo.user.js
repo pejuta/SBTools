@@ -3,7 +3,7 @@
 // @namespace   https://twitter.com/11powder
 // @description Stella Boardの各種行動画面にアイテム情報を表示する。
 // @include     /^http:\/\/stella2\.428\.st\/?(?:\?mode=action)?$/
-// @version     1.0.0
+// @version     1.0.1
 // @updateURL   https://pejuta.github.io/SBTools/UserScripts/SBMapItemInfo.user.js
 // @downloadURL https://pejuta.github.io/SBTools/UserScripts/SBMapItemInfo.user.js
 // @grant       none
@@ -145,6 +145,10 @@ await (async () => {
         });
     }
 
+    function addNotice() {
+        $("#maparea + p").after(`<p><small>※マップ上のツールチップや未取得アイテムのアイコンは、そのアイテムの取得後すぐには更新されません。Libra Reportと同タイミングで一日二回(朝/夕方)に行われます。</small></p>`);
+    }
+
     $("head").append(
 `<style type="text/css">
     #stcursor {
@@ -265,6 +269,7 @@ await (async () => {
         includeItemInfoOnMap(locationToItem, clearedStars);
         appendItemIcon(locationToItem, clearedStars);
         addToggleTooltipsButton(clearedStars);
+        addNotice();
         $("#maparea").on("mouseenter", ".layout[id^=stno]", function (e) {
             showTooltip(e.currentTarget);
         }).on("mouseleave", ".layout[id^=stno]", function (e) {
