@@ -3,7 +3,7 @@
 // @namespace   https://twitter.com/11powder
 // @description Stella Boardの各種行動画面にアイテム情報を表示する。
 // @include     /^http:\/\/stella2\.428\.st\/?(?:\?mode=action)?$/
-// @version     1.0.2
+// @version     1.0.2.1
 // @updateURL   https://pejuta.github.io/SBTools/UserScripts/SBMapItemInfo.user.js
 // @downloadURL https://pejuta.github.io/SBTools/UserScripts/SBMapItemInfo.user.js
 // @grant       none
@@ -289,7 +289,7 @@ await (async () => {
         $savePointSelect.on("change", update);
         observeInputMaproute(update);
         update();
-        $cnt.prependTo($("#d1").closest("p"));
+        $cnt.insertAfter($("#d1").siblings("input[type='submit']~br").first());
     }
 
     function addFragmentFinder(signs, fragDrops, fragToSigns) {
@@ -324,7 +324,7 @@ await (async () => {
             $possibleFragsCell.html(`<span>${frags.join("</span><span>")}</span>`);
         });
 
-        $cnt.prependTo($("#d1").closest("p"));
+        $cnt.insertAfter($("#d1").siblings("input[type='submit']~br").first());
     }
 
 
@@ -447,23 +447,24 @@ await (async () => {
     .fragsdropmap {
         position: relative;
         z-index: 400;
+        display: inline-block;
     }
 
     .fragsdropmove {
         position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 10px;
     }
 
     .fragsdropmap > .fragsdroptable {
-        position: absolute;
-        top: 150px;
-        left: 50px;
+        position: relative;
     }
     .fragsdropmove > .fragsdroptable {
-        position: absolute;
-        top: -24px;
-        right: 310px;
+        position: relative;
     }
     .fragsdroptable {
+        display: inline-table;
         border-collapse: separate;
         border-spacing: 0px 1px;
         text-align:center;
@@ -485,11 +486,13 @@ await (async () => {
 
     .fragfinder {
         position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 10px;
     }
     .fragfinder > div {
-        position: absolute;
-        top: -35px;
-        left: 720px;
+        position: relative;
+        margin-left: 10px;
         width: 320px;
         max-width: 320px;
         min-height: 240px;
@@ -542,9 +545,9 @@ await (async () => {
         includeItemInfoOnMap(await locationToItem, await clearedStars);
         appendItemIcon(await locationToItem, await clearedStars);
         addToggleTooltipsButton(await clearedStars);
+        addFragmentFinder(await signs, await fragDrops, await fragToSigns);
         // addFragmentInfoTableOnMap(await stars, await fragDrops, currentStno);
         addFragmentInfoTableOnMove(await stars, await fragDrops, currentStno);
-        addFragmentFinder(await signs, await fragDrops, await fragToSigns);
         addNotice();
         $("#maparea").on("mouseenter", ".layout[id^=stno]", function (e) {
             showTooltip(e.currentTarget);
